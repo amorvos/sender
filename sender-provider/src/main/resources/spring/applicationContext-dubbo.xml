@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://code.alibabatech.com/schema/dubbo
+                           http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="com.sender"
+                       owner="haibo"
+                       organization="sender"
+                       logger="slf4j"/>
+
+    <dubbo:consumer timeout="25000"/>
+
+    <dubbo:provider port="21920" timeout="20000"/>
+
+    <import resource="classpath:dubbo/dubbo-provider.xml"/>
+</beans>

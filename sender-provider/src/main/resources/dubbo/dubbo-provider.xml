@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://code.alibabatech.com/schema/dubbo
+                           http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:registry id="sender" protocol="zookeeper"
+                    address="zk.dev.corp.qunar.com:2181"
+                    group="${zk.group.sender}"/>
+    <!--address="${zk.url}"-->
+
+
+    <dubbo:service registry="sender"
+                   id="_idGeneratorService"
+                   group="${zk.group.sender}"
+                   interface="com.sender.client.generator.dubbo.IdGeneratorService"
+                   ref="idGeneratorService"
+                   version="0.0.1"/>
+</beans>
